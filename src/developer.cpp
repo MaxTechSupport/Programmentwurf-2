@@ -57,3 +57,19 @@ auto Developer::get_alias() const -> const std::string& {
 auto Developer::get_logo() const -> const std::string& {
     return logo_;
 }
+
+/**
+ * @brief Output stream operator for Developer.
+ * @param output_stream The output stream.
+ * @param dev The Developer object.
+ * @return The output stream.
+ * 
+ * Prints the name, alias, and logo of the developer to the output stream.
+ */
+auto operator<<(std::ostream& output_stream, const Developer& dev) -> std::ostream& {
+    output_stream << "Name: " << dev.name_ << "\nAlias: " << dev.alias_ << "\n";
+    if (!dev.logo_.empty()) {
+       output_stream << dev.logo_;
+    }
+    return output_stream;
+}
