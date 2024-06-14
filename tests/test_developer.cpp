@@ -41,3 +41,38 @@ protected:
         remove(logo_file_path.c_str());
     }
 };
+/**
+ * @brief Tests the constructor and getter methods of JuniorDeveloper and SeniorDeveloper.
+ */
+TEST_F(DeveloperTest, ConstructorAndGetters) {
+    EXPECT_EQ(juniorDev->get_name(), "Peter Parker");
+    EXPECT_EQ(juniorDev->get_alias(), "Spiderman");
+
+    EXPECT_EQ(seniorDev->get_name(), "Diana Prince");
+    EXPECT_EQ(seniorDev->get_alias(), "Wonder Woman");
+}
+
+/**
+ * @brief Tests the load_logo_from_file method of JuniorDeveloper.
+ * Checks if the logo is correctly loaded from the file and verifies that an exception is thrown for an invalid file path.
+ */
+TEST_F(DeveloperTest, LoadLogoFromFile) {
+    EXPECT_EQ(juniorDev->get_logo(), "");
+
+    juniorDev->load_logo_from_file(logo_file_path);
+    EXPECT_NE(juniorDev->get_logo(), "");
+    EXPECT_EQ(juniorDev->get_logo(), "Test Logo\n");
+
+    EXPECT_THROW(juniorDev->load_logo_from_file("invalid_path.txt"), std::runtime_error);
+}
+
+/**
+ * @brief Main function for running all the tests.
+ * @param argc Argument count
+ * @param argv Argument vector
+ * @return Result of running all tests
+ */
+auto main(int argc, char **argv) -> int {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
