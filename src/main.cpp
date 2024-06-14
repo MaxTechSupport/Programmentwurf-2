@@ -14,8 +14,8 @@ auto main() -> int {
     auto junior = std::make_shared<JuniorDeveloper>("Carl Johnson", "CJ"); ///< Create a JuniorDeveloper
 
     // Load logos from files
-    senior->load_logo_from_file("../assets/senior_logo.txt");
-    junior->load_logo_from_file("../assets/junior_logo.txt");
+    senior->load_logo_from_file("../../assets/senior_logo.txt");
+    junior->load_logo_from_file("../../assets/junior_logo.txt");
 
     // Add developers to the vector
     developers.push_back(senior);
